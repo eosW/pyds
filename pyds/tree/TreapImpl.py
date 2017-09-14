@@ -42,7 +42,11 @@ class TreapImpl(Treap):
         if node is None:
             if key is None or priority is None:
                 raise ValueError("one of node and (key, priority) must be passed")
-            node = self._nodeclass(key=key, priority=priority, val=val)
+            node = self._nodeclass()
+            node.key = key
+            node.priority = priority
+            if val is not None:
+                node.val = val
         if self._root is None:
             self._root = node
             return

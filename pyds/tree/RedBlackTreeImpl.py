@@ -30,7 +30,10 @@ class RedBlackTreeImpl(BinarySearchTree):
         if node is None:
             if key is None:
                 raise ValueError("one of node and key must be passed")
-            node = self._nodeclass(key=key, val=val)
+            node = self._nodeclass()
+            node.key = key
+            if val is not None:
+                node.val = val
         node.red = True
         if self._root is None:
             self._root = node
